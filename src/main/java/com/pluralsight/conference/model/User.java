@@ -1,16 +1,23 @@
 package com.pluralsight.conference.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="USERS_INFO")
 public class User {
     
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(name="FIRST_NAME")
     private String firstname;
+	@Column(name="LAST_NAME")
     private String lastname;
     private int age;
 
