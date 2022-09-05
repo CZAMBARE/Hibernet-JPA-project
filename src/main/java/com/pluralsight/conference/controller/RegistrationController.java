@@ -1,6 +1,7 @@
 package com.pluralsight.conference.controller;
 
 import com.pluralsight.conference.model.Registration;
+import com.pluralsight.conference.model.RegistrationReport;
 import com.pluralsight.conference.service.RegistartionService;
 import com.pluralsight.conference.service.RegistrationServiceImpl;
 
@@ -35,6 +36,15 @@ public class RegistrationController {
     	System.out.print("Registrations is called");
     	return registrations;
     }
+    
+    @GetMapping("registration-reports")
+    public @ResponseBody
+    List<RegistrationReport>
+    getRegistrationsReports(){
+    	List<RegistrationReport> registrationsReports = registrationService.findAllReport();
+    	System.out.print("Registrations Report is called");
+    	return registrationsReports;
+    }
 
     @PostMapping("registration")
     public String addRegistration(@Valid @ModelAttribute ("registration")
@@ -47,7 +57,6 @@ public class RegistrationController {
         }else {
         	registrationService.addRegistration(registration);
         }
-
         System.out.println("Registration: " + registration.getName());
 
         return "redirect:registration";

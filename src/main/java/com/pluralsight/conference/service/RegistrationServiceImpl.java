@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.pluralsight.conference.model.Course;
 import com.pluralsight.conference.model.Registration;
+import com.pluralsight.conference.model.RegistrationReport;
 import com.pluralsight.conference.repository.CourseRepository;
 import com.pluralsight.conference.repository.RegistrationRepo;
 
@@ -48,6 +49,16 @@ public class RegistrationServiceImpl implements RegistartionService {
 	public List<Registration> findAll() {
 		// TODO Auto-generated method stub
 		return registartionRepository.findAll();
+	}
+
+
+
+
+
+	@Override
+	public List<RegistrationReport> findAllReport() {
+		// TODO Auto-generated method stub
+		return registartionRepository.findAllReports();
 	}
 
 }
