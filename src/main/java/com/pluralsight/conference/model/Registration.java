@@ -7,6 +7,8 @@ import javax.persistence.*;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name="REGISTRATION")
@@ -19,7 +21,8 @@ public class Registration {
     @NotEmpty
     private String name;
     
-    @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL, fetch =FetchType.LAZY)
     private List<Course> courses = new ArrayList<>();
     
     

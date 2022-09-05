@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="COURSE")
 public class Course {
@@ -54,6 +56,7 @@ public class Course {
 	@Column(name="Description")
 	private String description;
 	
+	@JsonBackReference
 	@ManyToOne
 	private Registration registration;
 	

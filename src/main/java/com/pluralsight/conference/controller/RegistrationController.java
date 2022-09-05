@@ -10,6 +10,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -22,6 +25,15 @@ public class RegistrationController {
     @GetMapping("registration")
     public String getRegistration(@ModelAttribute ("registration")Registration registration) {
         return "registration";
+    }
+    
+    @GetMapping("registrations")
+    public @ResponseBody
+    List<Registration>
+    getRegistrations (){
+    	List<Registration> registrations = registrationService.findAll();
+    	System.out.print("Registrations is called");
+    	return registrations;
     }
 
     @PostMapping("registration")

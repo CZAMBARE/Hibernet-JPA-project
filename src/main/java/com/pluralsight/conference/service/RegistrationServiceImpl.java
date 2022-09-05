@@ -1,5 +1,7 @@
 package com.pluralsight.conference.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,16 @@ public class RegistrationServiceImpl implements RegistartionService {
 		courseRepository.save(course);
 		
 		return registration;
+	}
+
+
+
+
+
+	@Override
+	public List<Registration> findAll() {
+		// TODO Auto-generated method stub
+		return registartionRepository.findAll();
 	}
 
 }
