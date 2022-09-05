@@ -30,13 +30,16 @@ public class RegistrationServiceImpl implements RegistartionService {
 	@Transactional
 	public Registration addRegistration(Registration registration) {
 		registration = registartionRepository.save(registration);
+		System.out.println("Into Service Mthod Add Registration" + registration.getId());
 		
-		Course course = new Course();
-		course.setName("Intro");
-		course.setDescription("EveryOne should attend this mandatory Course");
-		course.setRegistration(registration);
+			System.out.println("Into If method");
+			Course course = new Course();
+			course.setName("Intro");
+			course.setDescription("EveryOne should attend this mandatory Course");
+			course.setRegistration(registration);
 		
-		courseRepository.save(course);
+			courseRepository.save(course);
+		
 		
 		return registration;
 	}

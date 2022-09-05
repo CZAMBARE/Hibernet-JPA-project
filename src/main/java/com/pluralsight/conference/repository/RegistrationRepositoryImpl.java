@@ -18,8 +18,15 @@ public class RegistrationRepositoryImpl implements RegistrationRepo {
 	
 	@Override
 	public Registration save(Registration registration) {
-		entityManager.persist(registration);
-		return registration;
+		if(registration.getId() ==null) {
+			entityManager.persist(registration);
+			return registration;
+			
+		}else {
+			entityManager.merge(registration);
+			return registration;
+		}
+		
 	}
 
 	@Override
@@ -31,11 +38,8 @@ public class RegistrationRepositoryImpl implements RegistrationRepo {
 
 	@Override
 	public List<RegistrationReport> findAllReports() {
-		String jpql = "Select new com.pluralsight.conference.model.RegistrationReport" + 
-	                     "(r.name, c.name, c.description) "+ 
-				         "from Registration r, Course c " + 
-	                     "where r.id= c.registration.id";
-        List<RegistrationReport> registrationsReports = entityManager.createQuery(jpql).getResultList();
+		
+        List<RegistrationReport> registrationsReports = entityManager.createNamedQuery(Registration.REGISTRATION_REPORT).getResultList();
 		
 		return registrationsReports;
 	}
